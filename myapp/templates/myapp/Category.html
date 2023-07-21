@@ -1,0 +1,54 @@
+{% extends 'myapp/base.html' %}
+
+
+   {% block head %}
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Bootstrap Grid</title>
+    {% endblock %}
+{% block body %}
+    <div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="title d-flex justify-content-center align-items-center">
+            <h3>{{category.name}}</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for categorie in categories %}
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mt-3">
+                <div class="card" style="width: 20rem;  height: 24rem;">
+              <img src="{{product.imageURL}}" alt="">
+                <div class="card-content">
+                  <h2 class="card-title" style="font-size: 3rem;color:#F74F06;">
+                      {{categorie.name}}
+                  </h2>
+                  <p class="card-price" style="font-size: 1 rem;color:#F74F06;">
+                    this category ........
+                  </p>
+                  <a href="{% url 'product_list' category_id=categorie.id %}" class="btn btn-dark card-button" style="">
+                    See the Category
+                    <span class="material-symbols-outlined">
+                      arrow_right_altb
+                    </span>
+                  </a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openMenu() {
+            document.querySelector(".menuoption").style.left = "0%";
+        }
+        function closeNav(){
+            document.querySelector(".menuoption").style.left = "-30%";
+        }
+    </script>
+{% endblock %}
+

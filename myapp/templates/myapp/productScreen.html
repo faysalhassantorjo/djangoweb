@@ -1,0 +1,42 @@
+{% extends 'myapp/base.html' %}
+
+
+ {% block head %}
+{% load static %}
+       <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+    <title>Document</title>
+    {% endblock %}
+    {% block body %}
+    <div class="container">
+<div class="row">
+    {% for product in products%}
+    <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mt-3">
+        <div class="card" style="width: 16rem;
+   height: 20rem;">
+               <img src="{{product.imageURL}}" alt="">
+        <div class="card-content">
+          <h2 class="card-title" style="color:#F74F06; font-size: 2.5rem">
+              {{product.name}}
+          </h2>
+          <p class="card-price" style="color:#fff; font-weight:bold; font-size: 1.4rem;">
+              {{product.price}}Tk.
+          </p>
+          <a href="{% url 'product' product_id=product.id %}" class="btn btn-dark card-button" >
+            See Details
+            <span class="material-symbols-outlined" style="">
+              arrow_right_alt
+            </span>
+          </a>
+        </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    </div>
+</div>
+    {% endblock %}
